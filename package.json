@@ -1,0 +1,32 @@
+{
+  "name": "food-app",
+  "version": "1.0.0",
+  "description": "Food app shows restaurants list",
+  "scripts": {
+    "start": "npx parcel index.html",
+    "build": "npx build parcel index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trilok2703/food-app.git"
+  },
+  "keywords": [
+    "food",
+    "app"
+  ],
+  "author": "Trilok Vallamkonda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trilok2703/food-app/issues"
+  },
+  "homepage": "https://github.com/trilok2703/food-app#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  }
+}
