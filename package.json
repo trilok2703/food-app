@@ -28,5 +28,8 @@
   "devDependencies": {
     "parcel": "^2.12.0",
     "process": "^0.11.10"
-  }
+  },
+  "browserslist":[
+    "last 10 versions"
+  ]
 }
