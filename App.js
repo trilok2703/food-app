@@ -29,7 +29,8 @@ const styleCard = {
 }
 
 // Restaurant card
-const RestaurantCard = () =>{
+const RestaurantCard = (props) =>{
+    console.log(props)
     return (
         <div 
             className='res-card'
@@ -40,10 +41,10 @@ const RestaurantCard = () =>{
                 alt="res-logo"
                 src='https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/bfcea2108aea7a98f2b370b78b2fdac0'
             />
-            <h3>Meghana Foods</h3>
-            <h4>Biryani, North Indian, Asian</h4>
-            <h4>4.4 stars</h4>
-            <h4>35 minutes</h4>
+            <h3>{props.resName}</h3>
+            <h4>{props.cuisine}</h4>
+            <h4>{props.resRating} stars</h4>
+            <h4>{props.deliveryTime}</h4>
         </div>
     )
 }
@@ -55,15 +56,18 @@ const Body = () => {
             <div className='search'>Search</div>
             <div className='res-container'>
                 {/* Restaurant card */}
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
+                <RestaurantCard 
+                    resName="Meghana Foods"
+                    cuisine="Biryani, North Indian, Asian"
+                    resRating="4.4"
+                    deliveryTime="35 minutes"
+                />
+                <RestaurantCard
+                    resName="KFC"
+                    cuisine="Burger"
+                    resRating="4"
+                    deliveryTime="20 minutes"
+                />
             </div>
         </div>
     )
