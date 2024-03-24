@@ -30,7 +30,9 @@ const styleCard = {
 
 // Restaurant card
 const RestaurantCard = (props) =>{
-    console.log(props)
+    console.log(props);
+
+    const {resData} = props;
     return (
         <div 
             className='res-card'
@@ -39,15 +41,113 @@ const RestaurantCard = (props) =>{
             <img
                 className='res-logo'
                 alt="res-logo"
-                src='https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/bfcea2108aea7a98f2b370b78b2fdac0'
+                src={'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/'+resData.info.cloudinaryImageId}
             />
-            <h3>{props.resName}</h3>
-            <h4>{props.cuisine}</h4>
-            <h4>{props.resRating} stars</h4>
-            <h4>{props.deliveryTime}</h4>
+            <h3>{resData.info.name}</h3>
+            <h4>{resData.info.cuisines.join(", ")}</h4>
+            <h4>{resData.info.costForTwo}</h4>
+            <h4>{resData.info.avgRating} stars</h4>
+            <h4>{resData.info.sla.slaString}</h4>
         </div>
     )
-}
+};
+
+const resObj = {
+    "info": {
+      "id": "608746",
+      "name": "Pavithra Veg",
+      "cloudinaryImageId": "axwt4fq9wwvfzulql7vu",
+      "locality": "V V Nagar",
+      "areaName": "Guntakal Rtc",
+      "costForTwo": "₹300 for two",
+      "cuisines": [
+        "North Indian",
+        "South Indian",
+        "Tandoor",
+        "Chinese"
+      ],
+      "avgRating": 4.1,
+      "veg": true,
+      "parentId": "156624",
+      "avgRatingString": "4.1",
+      "totalRatingsString": "100+",
+      "sla": {
+        "deliveryTime": 30,
+        "lastMileTravel": 0.4,
+        "serviceability": "SERVICEABLE",
+        "slaString": "25-30 mins",
+        "lastMileTravelString": "0.4 km",
+        "iconType": "ICON_TYPE_EMPTY"
+      },
+      "availability": {
+        "nextCloseTime": "2024-03-24 11:00:00",
+        "opened": true
+      },
+      "badges": {
+        
+      },
+      "isOpen": true,
+      "aggregatedDiscountInfoV2": {
+        
+      },
+      "type": "F",
+      "badgesV2": {
+        "entityBadges": {
+          "imageBased": {
+            
+          },
+          "textBased": {
+            
+          },
+          "textExtendedBadges": {
+            
+          }
+        }
+      },
+      "orderabilityCommunication": {
+        "title": {
+          
+        },
+        "subTitle": {
+          
+        },
+        "message": {
+          
+        },
+        "customIcon": {
+          
+        }
+      },
+      "differentiatedUi": {
+        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        "differentiatedUiMediaDetails": {
+          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+          "lottie": {
+            
+          },
+          "video": {
+            
+          }
+        }
+      },
+      "reviewsSummary": {
+        
+      },
+      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      "restaurantOfferPresentationInfo": {
+        
+      }
+    },
+    "analytics": {
+      "context": "seo-data-9cdc4211-f179-454c-ae42-7b2843b56cf4"
+    },
+    "cta": {
+      "link": "https://www.swiggy.com/restaurants/pavithra-veg-v-v-nagar-guntakal-rtc-guntakal-608746",
+      "text": "RESTAURANT_MENU",
+      "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+  };
 
 // Body
 const Body = () => {
@@ -57,16 +157,7 @@ const Body = () => {
             <div className='res-container'>
                 {/* Restaurant card */}
                 <RestaurantCard 
-                    resName="Meghana Foods"
-                    cuisine="Biryani, North Indian, Asian"
-                    resRating="4.4"
-                    deliveryTime="35 minutes"
-                />
-                <RestaurantCard
-                    resName="KFC"
-                    cuisine="Burger"
-                    resRating="4"
-                    deliveryTime="20 minutes"
+                    resData={resObj}
                 />
             </div>
         </div>
@@ -80,7 +171,9 @@ const Footer = () => {
             <p>@copyright</p>
         </div>
     )
-}
+};
+
+
 
 const AppLayout = () =>{
     return (
