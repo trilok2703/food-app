@@ -33,7 +33,7 @@
     height: auto;
     padding: 5px;
     margin: 5px;
-    background: "#f0f0f0";
+    background: #f0f0f0;
 }
 
 .res-card:hover{
@@ -50,4 +50,16 @@
 .footer {
     background-color: black;
     color: white;
+}
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    width: 200px;
+    height: 400px;
+    margin: 5px;
+    background: #f0f0f0;
 }
