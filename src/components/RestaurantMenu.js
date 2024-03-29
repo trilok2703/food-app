@@ -2,20 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import {MENU_URL} from '../utils/constants';
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-    const [resMenu, setResMenu] = useState(null);
+    
     const {resId} = useParams();
 
-    useEffect(()=>{
-        fetchMenu();
-    },[]);
-
-    const fetchMenu = async () =>{
-        const menuData = await fetch(MENU_URL+resId);
-        const menuRes = await menuData.json();
-        setResMenu(menuRes);
-    }
+    const resMenu = useRestaurantMenu(resId);
 
     if(resMenu === null) {
         return (<p>Loading..</p>)
