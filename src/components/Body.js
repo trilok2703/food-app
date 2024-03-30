@@ -26,32 +26,39 @@ const Body = () => {
 
     return (
       <div className="body">
-        <div className="filter">
-          <input 
-            type="text" 
-            value={searchText}
-            onChange={(e)=>{
-              setSearchText(e.target.value);
-            }}
-          />
-          {/* Search button for searching restaurants with search text */}
-          <button
-            onClick={()=>filterSearchResults(searchText)}
-          >
-            Search
-          </button>
-          {/* Filter button for top rated restaurant */}
-          <button 
-              className="filter-btn"
-              onClick={filterAvgRating}
-          >
-              Top Rated Restaurants
-          </button>
+        <div className="filter flex align-middle">
+          <div className="search my-4 mx-0 p-4">
+            <input
+                className="border border-solid border-black"
+                type="text" 
+                value={searchText}
+                onChange={(e)=>{
+                  setSearchText(e.target.value);
+                }}
+            />
+            {/* Search button for searching restaurants with search text */}
+            <button
+              className="px-4 py-1 bg-green-100 m-4 rounded-lg"
+              onClick={()=>filterSearchResults(searchText)}
+            >
+              Search
+            </button>
+          </div>
+          <div className="my-4 mx-0-2 p-4">
+            {/* Filter button for top rated restaurant */}
+            <button 
+                className="px-4 py-1 bg-gray-100 m-4 rounded-lg"
+                onClick={filterAvgRating}
+            >
+                Top Rated Restaurants
+            </button>
+          </div>
         </div>
-        <div className="res-container">
+        <div className="flex flex-wrap items-stretch">
           {/* Restaurant card */}
           {filteredRestaurants.map((restaurant) => (
-            <Link 
+            <Link
+              className="m-4"
               to={`/restaurants/${restaurant.info.id}`}
               key={restaurant.info.id}
             >
