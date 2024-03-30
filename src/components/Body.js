@@ -6,7 +6,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantList from "../utils/useRestaurantList";
 
 import Shimmer from "./Shimmer";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{withPromotedLabel} from "./RestaurantCard";
 
 const Body = () => {
     const onlineStatus = useOnlineStatus();
@@ -16,41 +16,43 @@ const Body = () => {
     
     const [searchText,setSearchText] = useState("");
 
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
     if(onlineStatus === false) return <h2>You are offline.. check your Internet conection</h2>
 
     if(filteredRestaurants.length === 0) {
         return <Shimmer/>;
     }
 
-    // console.log(listOfRestaurants)
+    console.log(filteredRestaurants);
 
     return (
       <div className="body">
         <div className="filter flex align-middle">
           <div className="search my-4 mx-0 p-4">
             <input
-                className="border border-solid border-black"
-                type="text" 
-                value={searchText}
-                onChange={(e)=>{
-                  setSearchText(e.target.value);
-                }}
+              className="border border-solid border-black"
+              type="text"
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
             />
             {/* Search button for searching restaurants with search text */}
             <button
               className="px-4 py-1 bg-green-100 m-4 rounded-lg"
-              onClick={()=>filterSearchResults(searchText)}
+              onClick={() => filterSearchResults(searchText)}
             >
               Search
             </button>
           </div>
           <div className="my-4 mx-0-2 p-4">
             {/* Filter button for top rated restaurant */}
-            <button 
-                className="px-4 py-1 bg-gray-100 m-4 rounded-lg"
-                onClick={filterAvgRating}
+            <button
+              className="px-4 py-1 bg-gray-100 m-4 rounded-lg"
+              onClick={filterAvgRating}
             >
-                Top Rated Restaurants
+              Top Rated Restaurants
             </button>
           </div>
         </div>
@@ -62,7 +64,11 @@ const Body = () => {
               to={`/restaurants/${restaurant.info.id}`}
               key={restaurant.info.id}
             >
-              <RestaurantCard  resData={restaurant} />
+              {(restaurant.info.avgRating > 4.3) ? (
+                <RestaurantCardPromoted resData={restaurant}/>
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )}
             </Link>
           ))}
         </div>
