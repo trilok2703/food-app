@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import {MENU_URL} from '../utils/constants';
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
     
@@ -16,23 +15,44 @@ const RestaurantMenu = () => {
 
     const {
         name,
+        totalRatingsString,
+        avgRatingString,
         costForTwoMessage,
         cuisines
         } = resMenu?.data?.cards[2]?.card?.card?.info;
 
+    const itemCategories =
+      resMenu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+        (c) =>
+          c?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
+
     return (
-        <div>
-            <h2>Restaurant Menu</h2>
-            <h2>Name: {name}</h2>
+      <div className="w-6/12 mx-auto">
+        {/* Restaurant details */}
+        <div className="flex flex-col mb-6">
+          <h2 className="font-bold text-lg my-4">{name}</h2>
+          <div className="flex font-semibold">
+            <p className="text-sm pr-1">⭐</p>
+            <p className="pr-4">
+              {avgRatingString} ({totalRatingsString})
+            </p>
+            <p className="pr-4">•</p>
             <p>{costForTwoMessage}</p>
-            <p>{cuisines.join(", ")}</p>
-            <ul>
-                <li>Dosa</li>
-                <li>Idli</li>
-                <li>Vada</li>
-            </ul>
+          </div>
+          <p className="text-orange-600">{cuisines.join(", ")}</p>
         </div>
-    )
+        {/* Restaurant categories */}
+        {itemCategories.length &&
+          itemCategories.map((itemCategory) => (
+            <RestaurantCategory
+              key={itemCategory.card.card.title}
+              data={itemCategory.card.card}
+            />
+          ))}
+      </div>
+    );
 }
 
 export default RestaurantMenu;

@@ -24,8 +24,6 @@ const Body = () => {
         return <Shimmer/>;
     }
 
-    console.log(filteredRestaurants);
-
     return (
       <div className="body">
         <div className="filter flex align-middle">
