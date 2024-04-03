@@ -1,6 +1,17 @@
-import {CDN_URL} from '../utils/constants'
+import { useDispatch } from 'react-redux';
+import {CDN_URL} from '../utils/constants';
+
+import {addItem} from '../utils/createSlice';
 
 const ItemList = ({items}) => {
+
+    const dispatch = useDispatch();
+
+    const handleAddItem = (item) => {
+        // Dispatch an action
+        dispatch(addItem(item));  
+    }
+
     return (
         <div>
            {items?.map(item=>{
@@ -23,8 +34,9 @@ const ItemList = ({items}) => {
                             />
                             <button 
                                 className="border border-spacing-2 p-2 rounded-lg w-8/12 absolute bottom-[-15px] left-9 bg-white text-orange-500 font-bold"
+                                onClick={() => handleAddItem(item)}
                             >
-                                ADD
+                                ADD +
                             </button>
                         </div>
                     </div>
