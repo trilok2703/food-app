@@ -14,7 +14,7 @@ const Header = () => {
 
     // Subscribing to the store using a selector
     const cartItem = useSelector((store)=>store.cart.items);
-    console.log(cartItem);
+    // console.log(cartItem);
     // console.log(data);
 
     return (
@@ -32,7 +32,7 @@ const Header = () => {
                     <li className="px-2"><Link to="/about">About</Link></li>
                     <li className="px-2"><Link to="/contact">Contact Us</Link></li>
                     <li className="px-2"><Link to="/grocery">Grocery</Link></li>
-                    <li className="px-2 font-bold"><Link to="/cart">Cart ({cartItem.length} items )</Link></li>
+                    <li className="px-2 font-bold"><Link to="/cart">Cart ({cartItem.length} items)</Link></li>
                     <li className="px-2">{data.loggedInUser}</li>
                     <button 
                         className="login-btn"
