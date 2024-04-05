@@ -31,6 +31,7 @@ const Body = () => {
             <input
               className="border border-solid border-black"
               type="text"
+              data-testid="searchInput"
               value={searchText}
               onChange={(e) => {
                 setSearchText(e.target.value);
@@ -47,6 +48,7 @@ const Body = () => {
           <div className="my-4 mx-0-2 p-4">
             {/* Filter button for top rated restaurant */}
             <button
+              data-testid="topResFilterBtn"
               className="px-4 py-1 bg-gray-100 m-4 rounded-lg"
               onClick={filterAvgRating}
             >
