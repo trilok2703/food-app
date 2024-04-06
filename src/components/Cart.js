@@ -27,9 +27,9 @@ const Cart = () => {
       )}
 
       {cartItems.length === 0 && (
-        <p className="text-center">
+        <h3 className="text-center">
           No items in the cart!. Please add the items to the cart
-        </p>
+        </h3>
       )}
 
       <div className="w-6/12 m-auto">
