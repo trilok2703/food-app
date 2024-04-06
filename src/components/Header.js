@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import {Link} from "react-router-dom";
 import {useSelector} from 'react-redux';
 
@@ -18,7 +18,9 @@ const Header = () => {
     // console.log(data);
 
     return (
-        <div className="flex justify-between bg-yellow-400 shadow-lg align-middle mb-4">
+        <div 
+        data-testid="header-comp"
+        className="flex justify-between bg-yellow-400 shadow-lg align-middle mb-4">
             <div className="logo-container">
                 <img
                     className="w-32"
@@ -27,7 +29,7 @@ const Header = () => {
             </div>
             <div className="">
                 <ul className="flex p-4 m-4">
-                    <li className="px-2">Online status:{onlineStatus ? "✔" : "🔴"}</li>
+                    <li data-testid="onlineStatus" className="px-2">Online status:{onlineStatus ? "✔" : "🔴"}</li>
                     <li className="px-2"><Link to="/">Home</Link></li>
                     <li className="px-2"><Link to="/about">About</Link></li>
                     <li className="px-2"><Link to="/contact">Contact Us</Link></li>
