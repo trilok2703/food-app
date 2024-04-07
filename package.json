@@ -4,9 +4,11 @@
   "description": "Food app shows restaurants list",
   "scripts": {
     "start": "npx parcel index.html",
-    "build": "npx build parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest",
-    "watch-test":"jest --watch"
+    "watch-test": "jest --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/trilok2703/food-app/issues"
   },
-  "homepage": "https://github.com/trilok2703/food-app#readme",
+  "homepage": "https://trilok2703.github.io/food-app/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "react": "^18.2.0",
@@ -36,6 +38,7 @@
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
     "babel-jest": "^29.7.0",
+    "gh-pages": "^6.1.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "parcel": "^2.12.0",
