@@ -20,6 +20,7 @@ const ItemList = ({items}) => {
                 return(
                     <div 
                         key={id}
+                        data-testid="resMenuItem"
                         className="mb-4 border-b-[1px] border-b-gray-100 pb-6 flex"
                     >
                         <div className="w-9/12">
