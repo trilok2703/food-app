@@ -1,18 +1,16 @@
 {
+  "homepage": "https://trilok2703.github.io/food-app/",
   "name": "food-app",
   "version": "1.0.0",
   "description": "Food app shows restaurants list",
+  "source": "index.html",
   "scripts": {
-    "start": "npx parcel index.html",
-    "build": "parcel build index.html",
+    "start": "parcel",
+    "build": "parcel build",
     "test": "jest",
     "watch-test": "jest --watch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/trilok2703/food-app.git"
   },
   "keywords": [
     "food",
@@ -23,7 +21,6 @@
   "bugs": {
     "url": "https://github.com/trilok2703/food-app/issues"
   },
-  "homepage": "https://trilok2703.github.io/food-app/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "react": "^18.2.0",
@@ -47,6 +44,6 @@
     "tailwindcss": "^3.4.3"
   },
   "browserslist": [
-    "last 10 versions"
+    "> 0.5%, last 2 versions, not dead"
   ]
 }
